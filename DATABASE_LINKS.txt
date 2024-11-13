@@ -1,0 +1,22 @@
+1. KIBA - https://www.kaggle.com/datasets/blk1804/kiba-drug-binding-dataset
+2. Kiba and Davis dataset github - https://github.com/thinng/GraphDTA/tree/master/data
+3. PDB Bind - http://www.pdbbind.org.cn/index.php
+
+- To access the PDBBind dataset- use deepchem library
+
+<aside>
+💡 import deepchem as dc
+grid_featurizer  = dc.feat.RdkitGridFeaturizer(voxel_width = 2.0,
+feature_types = ['hbond','salt_bridge','pi_stack','cation_pi','ecfp','splif'],
+sanitize = True, flatten = True)
+
+#loading the PDBBind Dataset, we are using MoleculNet instead of the featurizer we just defined
+
+featurizer = dc.feat.RdkitGridFeaturizer(voxel_width=2.0, sanitize=True, flatten=True,
+feature_types=['hbond', 'salt_bridge', 'pi_stack', 'cation_pi', 'ecfp', 'splif'])
+
+pdbbind_tasks, pdbbind_datasets, transformers = dc.molnet.load_pdbbind(featurizer=featurizer, splitter="random", subset="core")
+
+</aside>
+
+1. DrugBank - https://go.drugbank.com/
